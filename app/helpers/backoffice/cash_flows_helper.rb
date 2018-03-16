@@ -1,0 +1,2 @@
+module Backoffice::CashFlowsHelper
+end
