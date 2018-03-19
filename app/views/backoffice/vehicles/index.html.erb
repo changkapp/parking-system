@@ -45,7 +45,7 @@
                                         <td><%= vehicle.model %></td>
                                         <td><%= vehicle.email %></td>
                                         <td><%= vehicle.observations %></td>
-                                        <td><%= vehicle.created_at.to_s(:date) %></td>
+                                        <td><%= l vehicle.created_at, format: :short %></td>
                                         <td style="width: 90px;">
                                             <%= link_to edit_backoffice_vehicle_path(vehicle), class: "btn btn-success btn-circle" do %>
                                                 <i class="fa fa-edit"></i>

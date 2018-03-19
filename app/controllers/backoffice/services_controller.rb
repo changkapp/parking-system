@@ -44,7 +44,10 @@ class Backoffice::ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    @service.destroy
+  	@service = Service.find(params[:id])
+  	if @service.present?
+    	@service.destroy
+		end
       redirect_to backoffice_services_path, notice: "O Serviço #{@service.name} foi deletado com sucesso."
   end
 

@@ -1,7 +1,7 @@
 class Backoffice::VehiclesController < ApplicationController
   before_action :authenticate_admin!
   layout "backoffice"
-  
+
   def index
     @vehicles = Vehicle.all
   end
@@ -44,7 +44,10 @@ class Backoffice::VehiclesController < ApplicationController
   # DELETE /vehicles/1
   # DELETE /vehicles/1.json
   def destroy
-    @vehicle.destroy
+  	@vehicle = Vehicle.find(params[:id])
+  	if @vehicle.present?
+    	@vehicle.destroy
+		end
       redirect_to backoffice_vehicles_path, notice: "O Veículo #{@vehicle.plate} foi deletado com sucesso."
   end
 
