@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  
+
   namespace :backoffice do
     resources :services
     resources :mensalists
     resources :vehicles
     resources :cash_flows
     resources :maps
+    resources :admins
   end
 
   devise_for :admins
