@@ -6,6 +6,7 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :model
       t.string :email
       t.text :observations
+      t.boolean :payment_status
 
       t.timestamps null: false
     end

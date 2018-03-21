@@ -1,0 +1,14 @@
+<%= form_for([:backoffice, @cash_flow]) do |f| %>
+  <%= f.label "Valor de entrada" %>
+  <%= f.text_field :entry_cash, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Valor de saída" %>
+  <%= f.text_field :cash_outflow, class: 'form-control' %>
+  </br>
+
+  </br>
+  <%= link_to 'Voltar', backoffice_cash_flows_path, class: "btn btn-primary" %>
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+<% end %>

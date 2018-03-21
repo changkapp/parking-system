@@ -18,6 +18,7 @@ class Backoffice::MensalistsController < ApplicationController
 
   # GET /mensalists/1/edit
   def edit
+    @mensalist = Mensalist.find(params[:id])
   end
 
   # POST /mensalists
@@ -34,6 +35,7 @@ class Backoffice::MensalistsController < ApplicationController
   # PATCH/PUT /mensalists/1
   # PATCH/PUT /mensalists/1.json
   def update
+    @mensalist = Mensalist.find(params[:id])
     if @mensalist.update(mensalist_params)
       redirect_to backoffice_mensalists_path, notice: "O Mensalista #{@mensalist.name} foi atualizado com sucesso."
     else

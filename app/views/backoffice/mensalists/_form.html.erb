@@ -1,0 +1,28 @@
+<%= form_for([:backoffice, @mensalist]) do |f| %>
+  <%= f.label "Nome completo" %>
+  <%= f.text_field :name, class: 'form-control' %>
+  </br>
+
+  <div class= "born-at">
+  <%= f.label "Data de nascimento" %></br>
+  <%= f.date_select :born_at, {:prompt => { :day => 'Dia', :month => 'Mês', :year => 'Ano' }, start_year: Date.today.year, end_year: Date.today.year - 100}, {:class => 'form-control', :style=>'width:25%'}  %>
+  </div>
+  </br>
+
+  <%= f.label "Email" %>
+  <%= f.text_field :email, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Telefone" %>
+  <%= f.text_field :phone, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Bairro" %>
+  <%= f.text_field :neighborhood, class: 'form-control' %>
+  </br>
+
+  </br>
+  <%= link_to 'Voltar', backoffice_students_path, class: "btn btn-primary" %>
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+<% end %>

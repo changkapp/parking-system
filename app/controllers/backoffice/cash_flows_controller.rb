@@ -18,6 +18,7 @@ class Backoffice::CashFlowsController < ApplicationController
 
   # GET /cash_flows/1/edit
   def edit
+    @cash_flow = CashFlow.find(params[:id])
   end
 
   # POST /cash_flows
@@ -34,6 +35,7 @@ class Backoffice::CashFlowsController < ApplicationController
   # PATCH/PUT /cash_flows/1
   # PATCH/PUT /cash_flows/1.json
   def update
+    @cash_flow = CashFlow.find(params[:id])
     if @cash_flow.update(cash_flow_params)
       redirect_to backoffice_cash_flows_path, notice: "Os dados do caixa foram atualizados com sucesso."
     else

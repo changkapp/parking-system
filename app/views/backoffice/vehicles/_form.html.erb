@@ -1,0 +1,26 @@
+<%= form_for([:backoffice, @vehicle]) do |f| %>
+  <%= f.label "Placa do carro" %>
+  <%= f.text_field :plate, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Cor" %>
+  <%= f.text_field :color, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Modelo" %>
+  <%= f.text_field :model, class: 'form-control' %>
+  </br>
+
+  <%= f.label "email" %>
+  <%= f.text_field :email, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Observações" %>
+  <%= f.text_area :observations, class: 'form-control' %>
+  </br>
+
+  </br>
+  <%= link_to 'Voltar', backoffice_vehicles_path, class: "btn btn-primary" %>
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+<% end %>

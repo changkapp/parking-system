@@ -84,8 +84,9 @@ ActiveRecord::Schema.define(version: 20180314000714) do
     t.string   "model"
     t.string   "email"
     t.text     "observations"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "payment_status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

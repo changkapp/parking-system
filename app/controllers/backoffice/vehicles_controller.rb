@@ -18,6 +18,7 @@ class Backoffice::VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
+    @vehicle = Vehicle.find(params[:id])
   end
 
   # POST /vehicles
@@ -34,6 +35,7 @@ class Backoffice::VehiclesController < ApplicationController
   # PATCH/PUT /vehicles/1
   # PATCH/PUT /vehicles/1.json
   def update
+    @vehicle = Vehicle.find(params[:id])
     if @vehicle.update(vehicle_params)
       redirect_to backoffice_vehicles_path, notice: "O Veículo #{@vehicle.plate} foi atualizado com sucesso."
     else
@@ -59,6 +61,6 @@ class Backoffice::VehiclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:plate, :color, :model, :email, :observations)
+      params.require(:vehicle).permit(:plate, :color, :model, :email, :observations, :payment_status)
     end
 end

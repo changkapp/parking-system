@@ -18,6 +18,7 @@ class Backoffice::ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+    @service = Service.find(params[:id])
   end
 
   # POST /services
@@ -34,6 +35,7 @@ class Backoffice::ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    @service = Service.find(params[:id])
     if @service.update(service_params)
       redirect_to backoffice_services_path, notice: "O Serviço #{@service.name} foi atualizado com sucesso."
     else
