@@ -1,6 +1,4 @@
-class Backoffice::CashFlowsController < ApplicationController
-  before_action :authenticate_admin!
-  layout "backoffice"
+class Backoffice::CashFlowsController < BackofficeController
 
   def index
     @cash_flows = CashFlow.all

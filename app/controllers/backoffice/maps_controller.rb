@@ -1,5 +1,4 @@
-class Backoffice::MapsController < ApplicationController
-	before_action :authenticate_admin!	
+class Backoffice::MapsController < ApplicationController	
 	
   def index
   end

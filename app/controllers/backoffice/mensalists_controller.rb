@@ -1,6 +1,4 @@
-class Backoffice::MensalistsController < ApplicationController
-  before_action :authenticate_admin!
-  layout "backoffice"
+class Backoffice::MensalistsController < BackofficeController
   
   def index
     @mensalists = Mensalist.all

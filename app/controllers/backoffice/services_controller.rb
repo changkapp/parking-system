@@ -1,7 +1,5 @@
-class Backoffice::ServicesController < ApplicationController
-  before_action :authenticate_admin!
-  layout "backoffice"
-  
+class Backoffice::ServicesController < BackofficeController
+
   def index
     @services = Service.all
   end

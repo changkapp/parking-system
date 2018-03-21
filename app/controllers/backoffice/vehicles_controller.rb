@@ -1,7 +1,5 @@
-class Backoffice::VehiclesController < ApplicationController
-  before_action :authenticate_admin!
-  layout "backoffice"
-
+class Backoffice::VehiclesController < BackofficeController
+  
   def index
     @vehicles = Vehicle.all
   end
