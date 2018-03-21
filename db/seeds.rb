@@ -25,9 +25,14 @@ puts "Creating Vehicles ..."
  	Vehicle.find_or_create_by(plate: "KPJ-4421", color: "Preto", model: "Toyota Corolla", email: "email1@email.com", observations: "carro com amassados do lado direto")
  	Vehicle.find_or_create_by(plate: "YGJ-1234", color: "Azul", model: "Rolls Royce Phanton", email: "email2@email.com", observations: "NOTHING!!")
  	Vehicle.find_or_create_by(plate: "HAV-6969", color: "Amarelo", model: "Fiat Toro", email: "email3@email.com", observations: "")
-puts "Vehicles created..."   
+puts "Vehicles created."   
 
 
 puts "Creating Mensalists ..."
 	Mensalist.find_or_create_by(name: "André Chang", email:"chang123@gmail.com", price: 15.50, days_of_tolerance: 4, first_invoice_date: "10/02/2017", plates: "KYN-3322, EHR-5354", car_seat_numbers: 2)
-puts "Mensalists created..."
+puts "Mensalists created."
+
+
+puts "Creating Admin ..."
+	Admin.find_or_create_by(email: "chang@chang.com", password:"chang1234", password_confirmation:"chang1234")
+puts "Admin created."
