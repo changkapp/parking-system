@@ -11,6 +11,7 @@ class Backoffice::AdminsController < BackofficeController
   # GET /admins/new
   def new
     @admin = Admin.new
+    authorize @admin
   end
 
   # GET /admins/1/edit
@@ -32,14 +33,6 @@ class Backoffice::AdminsController < BackofficeController
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
   def update
-  	passwd = [:admin][:password]
-  	passwd_confirmation = [:admin][:password_confirmation]
-
-  	if passwd.blank? && passwd_confirmation.blank?
-  		params[:admin].delete(:password)
-  		params[:admin].delete(:password_confirmation)
-  	end
-
     @admin = Admin.find(params[:id])
     if @admin.update(admin_params)
       redirect_to backoffice_admins_path, notice: "Os dados do administrador foram atualizados com sucesso."
@@ -66,6 +59,6 @@ class Backoffice::AdminsController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_params
-      params.require(:admin).permit(:email, :password, :password_confirmation)
+      params.require(:admin).permit(:email, :password, :password_confirmation, :name, :role)
     end
 end

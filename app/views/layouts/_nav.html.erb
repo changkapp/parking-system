@@ -41,11 +41,13 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
+          <% if current_admin.role == 'complete_access' %>
             <li>
                 <%= link_to backoffice_admins_path do %>
                     <i class="fa fa-male fa-fw"></i> Usuários
                 <% end %>
             </li>
+          <% end %>
             <li>
                 <%= link_to backoffice_vehicles_path do %>
                     <i class="fa fa-car fa-fw"></i> Veículos

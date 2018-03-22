@@ -1,4 +1,12 @@
 <%= form_for([:backoffice, @admin]) do |f| %>
+  <%= f.label "Nome" %>
+  <%= f.text_field :name, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Email" %>
+  <%= f.text_field :email, class: 'form-control' %>
+  </br>
+
   <%= f.label "Email" %>
   <%= f.text_field :email, class: 'form-control' %>
   </br>
@@ -12,7 +20,7 @@
   </br>
 
   </br>
-  <%= link_to 'Voltar', backoffice_cash_flows_path, class: "btn btn-primary" %>
+  <%= link_to 'Voltar', backoffice_admins_path, class: "btn btn-primary" %>
   <%= f.submit "Salvar", class: "btn btn-primary" %>
 
 <% end %>

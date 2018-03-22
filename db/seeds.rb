@@ -34,5 +34,6 @@ puts "Mensalists created."
 
 
 puts "Creating Admin ..."
-	Admin.find_or_create_by(email: "chang@chang.com", password:"chang1234", password_confirmation:"chang1234")
+	Admin.create!({:name => "André Chang", :email => "chang@admin.com", :role => 0, :password => "chang1234", :password_confirmation => "chang1234" })
+	Admin.create!({:name => "Diego", :email => "diego@admin.com", :role => 1, :password => "diego1234", :password_confirmation => "diego1234" })
 puts "Admin created."
