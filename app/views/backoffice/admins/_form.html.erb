@@ -7,9 +7,9 @@
   <%= f.text_field :email, class: 'form-control' %>
   </br>
 
-  <%= f.label "Email" %>
-  <%= f.text_field :email, class: 'form-control' %>
-  </br>
+  <%= f.label "Tipo de acesso" %><br>
+  <%= f.select(:role, Admin.roles.keys.map {|role| [role.titleize,role]}) %>
+  <br><br>
 
   <%= f.label "Senha" %>
   <%= f.password_field :password, class: 'form-control' %>
