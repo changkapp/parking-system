@@ -7,6 +7,7 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :email
       t.text :observations
       t.boolean :payment_status
+      t.jsonb :services, default: {}       
 
       t.timestamps null: false
     end

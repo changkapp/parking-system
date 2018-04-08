@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'devise'
+gem 'pry'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'rails-assets-bootbox', source: 'https://rails-assets.org'
 gem 'pundit'

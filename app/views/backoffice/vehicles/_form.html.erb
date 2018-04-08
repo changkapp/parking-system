@@ -19,6 +19,18 @@
   <%= f.text_area :observations, class: 'form-control' %>
   </br>
 
+  <h1>Serviços</h1>
+
+    <% @services.each do |service| %>
+      <%= f.label service.name %>
+      <%= check_box_tag('vehicle[services][]', service.to_json, @selected_services_ids.include?(service.id)) %>
+    <% end %>
+
+  <h2>Serviços selecionados</h2>
+
+  <% @selected_services.each do |service|  %>
+    <%= service["name"] %><%= service["price"] * 3 %>
+  <% end %>
   </br>
   <%= link_to 'Voltar', backoffice_vehicles_path, class: "btn btn-primary" %>
   <%= f.submit "Salvar", class: "btn btn-primary" %>

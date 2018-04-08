@@ -12,17 +12,26 @@ class Backoffice::VehiclesController < BackofficeController
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
+    @services = Service.select(:id, :price, :name)   
   end
 
   # GET /vehicles/1/edit
   def edit
+    @services = Service.select(:id, :price, :name)    
     @vehicle = Vehicle.find(params[:id])
+  
+    @selected_services = @vehicle.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+    
+    @selected_services_ids = @selected_services.map{ |e| e["id"] }
   end
 
   # POST /vehicles
   # POST /vehicles.json
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    vehicle_params[:services] = Hash.new(vehicle_params[:services])
     if @vehicle.save
       redirect_to backoffice_vehicles_path, notice: "O Veículo #{@vehicle.plate} foi cadastrado com sucesso."
     else
@@ -59,6 +68,6 @@ class Backoffice::VehiclesController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:plate, :color, :model, :email, :observations, :payment_status)
+      params.require(:vehicle).permit(:plate, :color, :model, :email, :observations, :payment_status, :services => [])
     end
 end
