@@ -12,17 +12,32 @@ class Backoffice::MensalistsController < BackofficeController
   # GET /mensalists/new
   def new
     @mensalist = Mensalist.new
+    @services = Service.select(:id, :price, :name)
+
+    @selected_services = @mensalist.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+
+    @selected_services_ids = @selected_services.map{ |e| e["id"] } 
   end
 
   # GET /mensalists/1/edit
   def edit
     @mensalist = Mensalist.find(params[:id])
+    @services = Service.select(:id, :price, :name)
+
+    @selected_services = @mensalist.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+    
+    @selected_services_ids = @selected_services.map{ |e| e["id"] } 
   end
 
   # POST /mensalists
   # POST /mensalists.json
   def create
     @mensalist = Mensalist.new(mensalist_params)
+    mensalist_params[:services] = Hash.new(mensalist_params[:services])
     if @mensalist.save
       redirect_to backoffice_mensalists_path, notice: "O Mensalista #{@mensalist.name} foi cadastrado com sucesso."
     else
@@ -47,7 +62,7 @@ class Backoffice::MensalistsController < BackofficeController
   	@mensalist = Mensalist.find(params[:id])
   	if @mensalist.present?
     	@mensalist.destroy
-		end
+  	end
       redirect_to backoffice_mensalists_path, notice: "O Mensalista #{@mensalist.name} foi deletado com sucesso."
   end
 
@@ -59,6 +74,6 @@ class Backoffice::MensalistsController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mensalist_params
-      params.require(:mensalist).permit(:name, :email, :price, :days_of_tolerance, :first_invoice_date, :plates, :car_seat_numbers)
+      params.require(:mensalist).permit(:name, :email, :price, :days_of_tolerance, :first_invoice_date, :plates, :car_seat_numbers, :services => [])
     end
 end

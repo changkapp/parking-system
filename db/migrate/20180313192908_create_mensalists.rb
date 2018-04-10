@@ -8,6 +8,7 @@ class CreateMensalists < ActiveRecord::Migration
       t.date :first_invoice_date
       t.string :plates
       t.integer :car_seat_numbers
+      t.jsonb :services, default: {}
 
       t.timestamps null: false
     end

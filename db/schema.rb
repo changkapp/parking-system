@@ -69,8 +69,9 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.date     "first_invoice_date"
     t.string   "plates"
     t.integer  "car_seat_numbers"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.jsonb    "services",           default: {}
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "email"
     t.text     "observations"
     t.boolean  "payment_status"
+    t.date     "checkout_date"
     t.jsonb    "services",       default: {}
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

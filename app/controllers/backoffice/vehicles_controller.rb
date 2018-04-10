@@ -12,7 +12,13 @@ class Backoffice::VehiclesController < BackofficeController
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
-    @services = Service.select(:id, :price, :name)   
+    @services = Service.select(:id, :price, :name)
+
+    @selected_services = @vehicle.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+
+    @selected_services_ids = @selected_services.map{ |e| e["id"] }   
   end
 
   # GET /vehicles/1/edit
@@ -23,8 +29,9 @@ class Backoffice::VehiclesController < BackofficeController
     @selected_services = @vehicle.services.map{ |e| 
       JSON.parse(e).with_indifferent_access 
     }
-    
+
     @selected_services_ids = @selected_services.map{ |e| e["id"] }
+
   end
 
   # POST /vehicles

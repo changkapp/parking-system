@@ -1,28 +1,21 @@
 <%= form_for([:backoffice, @mensalist]) do |f| %>
-  <%= f.label "Nome completo" %>
-  <%= f.text_field :name, class: 'form-control' %>
-  </br>
+ 
+  <h1>Serviços</h1>
 
-  <div class= "born-at">
-  <%= f.label "Data de nascimento" %></br>
-  <%= f.date_select :born_at, {:prompt => { :day => 'Dia', :month => 'Mês', :year => 'Ano' }, start_year: Date.today.year, end_year: Date.today.year - 100}, {:class => 'form-control', :style=>'width:25%'}  %>
-  </div>
-  </br>
+  <% @services.each do |service| %>
+    <%= f.label service.name %>
+    <%= check_box_tag('mensalist[services][]', service.to_json, @selected_services_ids.include?(service.id)) %>
+  <% end %>
 
-  <%= f.label "Email" %>
-  <%= f.text_field :email, class: 'form-control' %>
-  </br>
+  <h2>Serviços selecionados</h2>
 
-  <%= f.label "Telefone" %>
-  <%= f.text_field :phone, class: 'form-control' %>
-  </br>
-
-  <%= f.label "Bairro" %>
-  <%= f.text_field :neighborhood, class: 'form-control' %>
-  </br>
+  <% @selected_services.each do |service|  %>
+    <%= service["name"] %><%= service["price"] * 3 %>
+  <% end %>
+</br>
 
   </br>
-  <%= link_to 'Voltar', backoffice_students_path, class: "btn btn-primary" %>
+  <%= link_to 'Voltar', backoffice_mensalists_path, class: "btn btn-primary" %>
   <%= f.submit "Salvar", class: "btn btn-primary" %>
 
 <% end %>
