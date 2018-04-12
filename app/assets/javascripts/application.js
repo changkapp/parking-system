@@ -19,3 +19,67 @@
 $(document).ready( function () {
     $('#dataTables-example').DataTable();
 } );
+
+$(document).ready(function(){
+
+	function addPlateOnClick(){
+
+		var vaga = $("section .col-md-2");
+
+		vaga.click(function(){
+			if( $(this).find(".placa").html() == 0){
+				var resposta = prompt("Digite a Placa do Carro");
+				$(this).find(".placa").html(resposta);
+
+				// $(this).find(".counter").filter(function () {
+				// 	inicia($(this));
+				// });
+
+			}else{
+				var confirmaExclusao = confirm("Essa vaga já possui um carro, você quer retirar?");
+				if (confirmaExclusao){
+					// para();
+					$(this).removeClass("naoTemVaga");
+					$(this).find(".placa").html('');
+					CountFreeSpots();
+				}
+			}
+		});
+
+	}
+
+	function changeColorOnClick(){
+
+		var vaga = $("section .col-md-2");
+
+		vaga.click(function(){
+			$(this).addClass("naoTemVaga");
+
+			//atualiza os valores no dashboard das vagas
+			CountFreeSpots();
+		});
+
+	}
+
+	function CountFreeSpots(){
+
+		//variavel para ver a classe nao tem vaga
+		var vagaFree = $(".naoTemVaga");
+
+		//trocando no card para o numero exato de vagas ocupadas
+		$("#vagasOcupadas").html(vagaFree.length);
+ 
+		//contanto quantas vagas estao vazias
+		var NumeroDeVagasOcupadas = $(".naoTemVaga").length;
+		var numeroTotalDeVagas = $(".col-md-2").length;
+
+		//substituindo os valores das vagas livres no card ( valor total menos o numero de vagas ocupadas, que dara o resultado das vagas livres)
+		$("#vagasLivres").html(numeroTotalDeVagas - NumeroDeVagasOcupadas);
+
+	}
+
+	changeColorOnClick();
+	addPlateOnClick();
+
+
+});

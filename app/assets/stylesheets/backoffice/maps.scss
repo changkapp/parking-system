@@ -1,3 +1,88 @@
 // Place all the styles related to the backoffice/Maps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body{
+  font-family: 'Helvetica', Sans-serif;
+}
+section .row .col-md-2{
+  width: 14.28%;
+  text-align: center;
+  font-size: 20px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #ececec;
+  position: relative;
+}
+section .container-fluid{
+  width: 100%;
+  padding: 50px;
+  background: rgba(255,255,255,0.8);
+  webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+section{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ececec;
+}
+section h2{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  font-size: 45px;
+}
+section .col-md-2 .fa{
+  color: green;
+  font-size: 40px;
+}
+section .naoTemVaga .fa{
+  color: red;
+}
+section .col-md-4 div{
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 40px;
+  padding: 30px;
+  color: black;
+}
+section .row .col-md-4 .naotem{
+  color: red;
+}
+section .row .col-md-4 .tem{
+  color: green;
+}
+section .col-md-4 h4{
+  font-size: 30px;
+  font-weight: 900;
+}
+section .col-md-2 .placa{
+  border: 1px solid #ececec;
+  padding: 5px 10px;
+  background-color: #ececec;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 8px;
+}
+section .col-md-2 .fa-clock-o{
+  color: #000;
+  font-size: 15px;
+  right: 15px;
+  bottom: 15px;
+  font-weight: bold;
+  position: absolute;
+  margin-left: auto;
+  padding-right: 2px;
+}
