@@ -34,6 +34,7 @@
                                         <th>Email</th>
                                         <th>Observações</th>
                                         <th>Entrada</th>
+                                        <th>Status de pagamento</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -46,6 +47,7 @@
                                         <td><%= vehicle.email %></td>
                                         <td><%= vehicle.observations %></td>
                                         <td><%= l vehicle.created_at, format: :short %></td>
+                                        <td><%= I18n.t :"payment_status.#{vehicle.payment_status}" %></td>
                                         <td style="width: 90px;">
                                             <%= link_to edit_backoffice_vehicle_path(vehicle), class: "btn btn-success btn-circle" do %>
                                                 <i class="fa fa-edit"></i>

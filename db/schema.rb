@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "model"
     t.string   "email"
     t.text     "observations"
-    t.boolean  "payment_status"
+    t.integer  "payment_status", default: 0
     t.date     "checkout_date"
     t.jsonb    "services",       default: {}
     t.integer  "park_id"

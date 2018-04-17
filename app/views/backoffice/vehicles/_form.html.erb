@@ -33,12 +33,22 @@
       <%= check_box_tag('vehicle[services][]', service.to_json, @selected_services_ids.include?(service.id)) %>
     <% end %>
 
-  <h2>Serviços selecionados</h2>
+ <!--  <h2>Serviços selecionados</h2>
 
   <% @selected_services.each do |service|  %>
     <%= service["name"] %><%= service["price"] * 3 %>
   <% end %>
-  </br>
+  </br> -->
+
+  <br>
+  <% if @vehicle.id %>
+    <h1>Pagamento</h1>
+      <%= f.label "Status do pagamento" %>
+      <%= f.select :payment_status, enum_options_for_select(Vehicle, :payment_status) %>
+    <br>
+  <% end %>
+  <br>
+
   <%= link_to 'Voltar', backoffice_vehicles_path, class: "btn btn-primary" %>
   <%= f.submit "Salvar", class: "btn btn-primary" %>
 

@@ -1,5 +1,10 @@
-pt-BR:
+pt-BR: 
   activerecord:
+    enums:
+      vehicle:
+        payment_statuses:
+          unpaid: "Não Pago"
+          paid: "Pago"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
