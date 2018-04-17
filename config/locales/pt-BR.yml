@@ -1,4 +1,8 @@
-pt-BR: 
+pt-BR:
+  devise:
+    sessions:
+      admin:
+        signed_in: "Bem vindo!" 
   activerecord:
     enums:
       vehicle:
