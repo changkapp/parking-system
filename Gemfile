@@ -18,6 +18,7 @@ gem 'pry'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'rails-assets-bootbox', source: 'https://rails-assets.org'
 gem 'pundit'
+gem 'jquery-ui-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

@@ -31,6 +31,7 @@
                                         <th>Nome do mensalista</th>
                                         <th>Email</th>
                                         <th>Preço a pagar</th>
+                                        <th>Data de cadastro</th>
                                         <th>Primeira data de cobrança</th>
                                         <th></th>
                                     </tr>
@@ -41,6 +42,7 @@
                                         <td><%= mensalist.name %></td>
                                         <td><%= mensalist.email %></td>
                                         <td>R$ <%= mensalist.price %></td>
+                                        <td><%= l mensalist.created_at, format: :short %></td>
                                         <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
                                         <td style="width: 90px;">
                                             <%= link_to edit_backoffice_mensalist_path(mensalist), class: "btn btn-success btn-circle" do %>

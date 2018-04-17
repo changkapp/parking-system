@@ -5,7 +5,37 @@
   <%= f.collection_select(:park_id, Park.all, :id, :park_name, {},{:class=>'form-control'} ) %>
   </br>
   <input type="hidden" id="data" value="<%= @park.to_json%>">
- 
+   
+  <%= f.label "Nome" %>
+  <%= f.text_field :name, class: 'form-control' %>
+  </br>
+  
+  <%= f.label "Email" %>
+  <%= f.text_field :email, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Data do primeiro pagamento" %>
+  <br>
+  <%= f.text_field :first_invoice_date, id: "datepicker" %>
+  </br>
+  <br>
+
+  <%= f.label "Dias de tolerância" %>
+  <br>
+  <%= f.select(:days_of_tolerance, (0..30)) %> 
+  </br>
+  <br>
+
+  <%= f.label "Placas" %>
+  <%= f.text_field :plates, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Dias de tolerância" %>
+  <br>
+  <%= f.select(:car_seat_numbers, (0..10)) %> 
+  </br>
+  <br>
+
   <h1>Serviços</h1>
 
   <% @services.each do |service| %>
@@ -13,11 +43,11 @@
     <%= check_box_tag('mensalist[services][]', service.to_json, @selected_services_ids.include?(service.id)) %>
   <% end %>
 
-  <h2>Serviços selecionados</h2>
+ <!--  <h2>Serviços selecionados</h2>
 
   <% @selected_services.each do |service|  %>
     <%= service["name"] %><%= service["price"] * 3 %>
-  <% end %>
+  <% end %> -->
 </br>
 
   </br>

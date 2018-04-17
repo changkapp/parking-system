@@ -5,7 +5,7 @@ class CreateMensalists < ActiveRecord::Migration
       t.string :email
       t.float :price
       t.integer :days_of_tolerance
-      t.date :first_invoice_date
+      t.datetime :first_invoice_date
       t.string :plates
       t.integer :car_seat_numbers
       t.jsonb :services, default: {}

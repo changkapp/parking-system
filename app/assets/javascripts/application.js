@@ -13,12 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap_sb_admin_base_v2
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-pt-BR
 //= require_tree .
 
 
 $(document).ready( function () {
     $('#dataTables-example').DataTable();
 } );
+
+jQuery(function ($) {
+	$( "#datepicker" ).datepicker({
+		dateFormat: "d MM, yy"
+	});
+});
 
 $(document).ready(function(){
 
