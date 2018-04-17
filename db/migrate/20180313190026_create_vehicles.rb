@@ -8,7 +8,9 @@ class CreateVehicles < ActiveRecord::Migration
       t.text :observations
       t.boolean :payment_status
       t.date :checkout_date
-      t.jsonb :services, default: {}       
+      t.jsonb :services, default: {} 
+
+      t.references :park, index: true, foreign_key: true      
 
       t.timestamps null: false
     end

@@ -70,8 +70,17 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "plates"
     t.integer  "car_seat_numbers"
     t.jsonb    "services",           default: {}
+    t.integer  "park_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  add_index "mensalists", ["park_id"], name: "index_mensalists_on_park_id", using: :btree
+
+  create_table "parks", force: :cascade do |t|
+    t.string "park_name"
+    t.string "park_location"
+    t.string "operating_hours"
   end
 
   create_table "services", force: :cascade do |t|
@@ -90,8 +99,13 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.boolean  "payment_status"
     t.date     "checkout_date"
     t.jsonb    "services",       default: {}
+    t.integer  "park_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "vehicles", ["park_id"], name: "index_vehicles_on_park_id", using: :btree
+
+  add_foreign_key "mensalists", "parks"
+  add_foreign_key "vehicles", "parks"
 end

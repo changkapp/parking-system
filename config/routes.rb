@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :backoffice do
+    resources :parks
     resources :services
     resources :mensalists
     resources :vehicles

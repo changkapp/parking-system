@@ -1,0 +1,18 @@
+<%= form_for([:backoffice, @park]) do |f| %>
+  <%= f.label "Nome do Estacionamento" %>
+  <%= f.text_field :park_name, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Endereço" %>
+  <%= f.text_field :park_location, class: 'form-control' %>
+  </br>
+
+  <%= f.label "Horário de Funcionamento" %>
+  <%= f.text_field :operating_hours, class: 'form-control' %>
+  </br>
+
+
+  <%= link_to 'Voltar', backoffice_parks_path, class: "btn btn-primary" %>
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+
+<% end %>

@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+puts "Creating Parks ..."
+	Park.find_or_create_by(park_name: "Estacionamento do Andŕe", park_location: "Rua Visconde do Rio Branco, número 32", operating_hours: "8:00 às 23:00")
+	Park.find_or_create_by(park_name: "Estacionamento do João", park_location: "Rua abcd", operating_hours: "8:00 às 23:00")
+puts "CashFlows created."
 
 puts "Creating Services..."
 	Service.find_or_create_by(name: "Lava Jato", price: 27.50)
@@ -22,14 +26,15 @@ puts "CashFlows created."
 
 
 puts "Creating Vehicles ..."
- 	Vehicle.find_or_create_by(plate: "KPJ-4421", color: "Preto", model: "Toyota Corolla", email: "email1@email.com", observations: "carro com amassados do lado direto")
- 	Vehicle.find_or_create_by(plate: "YGJ-1234", color: "Azul", model: "Rolls Royce Phanton", email: "email2@email.com", observations: "NOTHING!!")
- 	Vehicle.find_or_create_by(plate: "HAV-6969", color: "Amarelo", model: "Fiat Toro", email: "email3@email.com", observations: "")
+	park_fist_id = Park.first.id
+ 	Vehicle.find_or_create_by(park_id: park_fist_id, plate: "KPJ-4421", color: "Preto", model: "Toyota Corolla", email: "email1@email.com", observations: "carro com amassados do lado direto")
+ 	Vehicle.find_or_create_by(park_id: park_fist_id, plate: "YGJ-1234", color: "Azul", model: "Rolls Royce Phanton", email: "email2@email.com", observations: "NOTHING!!")
+ 	Vehicle.find_or_create_by(park_id: park_fist_id, plate: "HAV-6969", color: "Amarelo", model: "Fiat Toro", email: "email3@email.com", observations: "")
 puts "Vehicles created."   
 
 
 puts "Creating Mensalists ..."
-	Mensalist.find_or_create_by(name: "André Chang", email:"chang123@gmail.com", price: 15.50, days_of_tolerance: 4, first_invoice_date: "10/02/2017", plates: "KYN-3322, EHR-5354", car_seat_numbers: 2)
+	Mensalist.find_or_create_by(park_id: park_fist_id, name: "André Chang", email:"chang123@gmail.com", price: 15.50, days_of_tolerance: 4, first_invoice_date: "10/02/2017", plates: "KYN-3322, EHR-5354", car_seat_numbers: 2)
 puts "Mensalists created."
 
 

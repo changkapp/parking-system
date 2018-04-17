@@ -10,6 +10,8 @@ class CreateMensalists < ActiveRecord::Migration
       t.integer :car_seat_numbers
       t.jsonb :services, default: {}
 
+      t.references :park, index: true, foreign_key: true
+
       t.timestamps null: false
     end
   end

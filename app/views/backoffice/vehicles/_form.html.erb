@@ -1,4 +1,11 @@
 <%= form_for([:backoffice, @vehicle]) do |f| %>
+
+  <%= f.label "Estacionamento" %>
+  </br>
+  <%= f.collection_select(:park_id, Park.all, :id, :park_name, {},{:class=>'form-control'} ) %>
+  </br>
+  <input type="hidden" id="data" value="<%= @park.to_json%>">
+
   <%= f.label "Placa do carro" %>
   <%= f.text_field :plate, class: 'form-control' %>
   </br>
