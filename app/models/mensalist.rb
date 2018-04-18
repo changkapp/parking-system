@@ -18,7 +18,6 @@ class Mensalist < ActiveRecord::Base
 		check_payment = self.payment_status
 
 		if check_payment == "paid"
-			binding.pry
 			old_invoice_date = self.check_tolerance_date
 			invoice_date = old_invoice_date + 1.month
 			self.first_invoice_date = invoice_date
