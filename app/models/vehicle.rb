@@ -4,6 +4,6 @@ class Vehicle < ActiveRecord::Base
 	enum payment_status: {
     unpaid: 1,
     paid: 2
-  }
+	}
 
 end

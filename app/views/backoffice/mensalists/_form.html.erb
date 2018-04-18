@@ -30,7 +30,7 @@
   <%= f.text_field :plates, class: 'form-control' %>
   </br>
 
-  <%= f.label "Dias de tolerância" %>
+  <%= f.label "Quantidade de carros" %>
   <br>
   <%= f.select(:car_seat_numbers, (0..10)) %> 
   </br>
@@ -49,6 +49,15 @@
     <%= service["name"] %><%= service["price"] * 3 %>
   <% end %> -->
 </br>
+
+  <br>
+  <% if @mensalist.id %>
+    <h1>Pagamento</h1>
+      <%= f.label "Status do pagamento" %>
+      <%= f.select :payment_status, enum_options_for_select(Mensalist, :payment_status) %>
+    <br>
+  <% end %>
+  <br>
 
   </br>
   <%= link_to 'Voltar', backoffice_mensalists_path, class: "btn btn-primary" %>

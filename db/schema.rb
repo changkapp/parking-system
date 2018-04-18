@@ -67,8 +67,10 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.float    "price"
     t.integer  "days_of_tolerance"
     t.datetime "first_invoice_date"
+    t.datetime "invoice_date"
     t.string   "plates"
     t.integer  "car_seat_numbers"
+    t.integer  "payment_status",     default: 1
     t.jsonb    "services",           default: {}
     t.integer  "park_id"
     t.datetime "created_at",                      null: false
@@ -96,7 +98,7 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "model"
     t.string   "email"
     t.text     "observations"
-    t.integer  "payment_status", default: 0
+    t.integer  "payment_status", default: 1
     t.date     "checkout_date"
     t.jsonb    "services",       default: {}
     t.integer  "park_id"

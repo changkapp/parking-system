@@ -5,6 +5,10 @@ pt-BR:
         signed_in: "Bem vindo!" 
   activerecord:
     enums:
+      mensalist:
+        payment_statuses:
+          unpaid: "Não Pago"
+          paid: "Pago"
       vehicle:
         payment_statuses:
           unpaid: "Não Pago"
