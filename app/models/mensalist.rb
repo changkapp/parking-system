@@ -31,4 +31,8 @@ class Mensalist < ActiveRecord::Base
 			end
 		end
 	end
+
+	def mensalist_receipt_date
+		self.first_invoice_date - 1.month
+	end
 end

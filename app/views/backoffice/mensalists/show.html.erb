@@ -1,0 +1,59 @@
+  <style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+</style>
+
+  <div id="page-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h2 class="page-header">Recibo da placa <%= @mensalist.name%> </h2>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                          <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-0">
+                              <div class="row">
+                                Estacionamento: <%= @mensalist.park.park_name %>
+                            <br>CNPJ: <%= @mensalist.park.park_cnpj %>
+                            <br>Endereço: <%= @mensalist.park.park_location %>
+                            <br>Placa(s) do(s) veículo(s): <%= @mensalist.plates %>
+
+                            <br>Data da cobrança: <%= @mensalist.mensalist_receipt_date.strftime('%d/%m/%Y') %>
+                            
+                            <%  @selected_services = @mensalist.services.map{ |e| 
+                                JSON.parse(e).with_indifferent_access }%>
+                                <% if @selected_services && @mensalist.price %>
+                                  <% service_price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
+                                  <% total = service_price + @mensalist.price %> 
+                                  <br>Serviços utilizados: <%= @selected_services.map{|data| data['name']}.join(', ').gsub(/["]/,' ') %>
+                                  <br>Valor total: R$ <%= total %>
+                                <% else %>
+                                  <br>Valor total: R$ <%= @mensalist.price %>
+                                <% end %>
+
+                              <br>
+                              <br>
+                              <br>
+                                <button id ="printbtn" class="btn btn-success" onclick="hidebtn()">Imprimir recibo</button>
+
+                            </div>      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+
+<script>
+function hidebtn() {
+    window.print();
+}
+</script>

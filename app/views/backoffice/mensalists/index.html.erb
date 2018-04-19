@@ -64,7 +64,7 @@
 
                                             <% if mensalist.payment_status == "paid" || mensalist.payment_status == "debtor" %>
                                               
-                                              <%= link_to backoffice_mensalist_path(mensalist), method: :show, class: "btn btn-info btn-circle" do %>
+                                              <%= link_to backoffice_mensalist_path(mensalist.id), method: :get, class: "btn btn-info btn-circle" do %>
                                                   <i class="fa fa-tasks"></i>
                                               <% end %>
                                             

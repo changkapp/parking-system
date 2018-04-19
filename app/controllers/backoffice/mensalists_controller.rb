@@ -7,6 +7,14 @@ class Backoffice::MensalistsController < BackofficeController
   # GET /mensalists/1
   # GET /mensalists/1.json
   def show
+    @mensalist = Mensalist.find(params[:id])
+    @services = Service.select(:id, :price, :name)
+
+    @selected_services = @mensalist.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+    
+    @selected_services_ids = @selected_services.map{ |e| e["id"] }
   end
 
   # GET /mensalists/new
