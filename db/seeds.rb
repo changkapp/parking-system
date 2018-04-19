@@ -8,8 +8,8 @@
 
 
 puts "Creating Parks ..."
-	Park.find_or_create_by(park_name: "Estacionamento do Andŕe", park_location: "Rua Visconde do Rio Branco, número 32", operating_hours: "8:00 às 23:00")
-	Park.find_or_create_by(park_name: "Estacionamento do João", park_location: "Rua abcd", operating_hours: "8:00 às 23:00")
+	Park.find_or_create_by(park_name: "Estacionamento do Andŕe", park_location: "Rua Visconde do Rio Branco, número 32", operating_hours: "8:00 às 23:00", park_cnpj: "987654", park_spots: 28)
+	Park.find_or_create_by(park_name: "Estacionamento do João", park_location: "Rua abcd", operating_hours: "8:00 às 23:00", park_cnpj: "123456", park_spots: 28)
 puts "Parks created."
 
 park_fist_id = Park.first.id

@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(version: 20180322000038) do
   add_index "mensalists", ["park_id"], name: "index_mensalists_on_park_id", using: :btree
 
   create_table "parks", force: :cascade do |t|
-    t.string "park_name"
-    t.string "park_location"
-    t.string "operating_hours"
+    t.string  "park_name"
+    t.integer "park_spots"
+    t.string  "park_cnpj"
+    t.string  "park_location"
+    t.string  "operating_hours"
   end
 
   create_table "services", force: :cascade do |t|
@@ -98,14 +100,14 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "model"
     t.string   "email"
     t.text     "observations"
-    t.float    "total_to_pay"
+    t.float    "total_to_pay",    default: 0.0
     t.integer  "permanence_type", default: 1
     t.integer  "payment_status",  default: 1
     t.date     "checkout_date"
     t.jsonb    "services",        default: {}
     t.integer  "park_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "vehicles", ["park_id"], name: "index_vehicles_on_park_id", using: :btree

@@ -41,11 +41,13 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
-          <li>
+           <% if current_admin.role == 'complete_access' %>
+            <li>
                 <%= link_to backoffice_parks_path do %>
                     <i class="fa fa-home fa-fw"></i> Estacionamentos
                 <% end %>
             </li>
+            <% end %>
           <% if current_admin.role == 'complete_access' %>
             <li>
                 <%= link_to backoffice_admins_path do %>

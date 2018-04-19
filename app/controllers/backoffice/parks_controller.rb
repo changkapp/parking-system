@@ -59,6 +59,6 @@ class Backoffice::ParksController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def park_params
-      params.require(:park).permit(:park_name, :park_location, :operating_hours)
+      params.require(:park).permit(:park_name, :park_location, :operating_hours, :park_cnpj)
     end
 end

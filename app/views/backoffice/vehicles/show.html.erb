@@ -1,0 +1,56 @@
+  <style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+</style>
+
+  <div id="page-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h2 class="page-header">Recibo da placa <%= @vehicle.plate%> </h2>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                          <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-0">
+                              <div class="row">
+                                Estacionamento: <%= @vehicle.park.park_name %>
+                            <br>CNPJ: <%= @vehicle.park.park_cnpj %>
+                            <br>Endereço: <%= @vehicle.park.park_location %>
+                            <br>Placa do veículo: <%= @vehicle.plate %>
+                            <br>Entrada: <%= l @vehicle.created_at, format: :short %>
+                            <br>Saída: <%= l @vehicle.updated_at, format: :short %>
+
+                            <% if @vehicle.services %>
+                              <% price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
+                              <% total = price + @vehicle.calculate_invoice %> 
+                              <br>Serviços utilizados: <%= @selected_services.map{|data| data['name']}.join(', ').gsub(/["]/,' ') %>
+                              <br>Valor total: R$ <%= total %>
+                            <% else %>
+                              <br>Valor total: R$ <%= @vehicle.calculate_invoice %>
+                            <% end %>
+                            <br>
+                            <br>
+                            <br>
+                            <button id ="printbtn" class="btn btn-success" onclick="hidebtn()">Imprimir recibo</button>
+
+                            </div>      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+
+<script>
+function hidebtn() {
+    window.print();
+}
+</script>

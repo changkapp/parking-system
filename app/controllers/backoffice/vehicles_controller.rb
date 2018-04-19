@@ -7,6 +7,15 @@ class Backoffice::VehiclesController < BackofficeController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    @vehicle = Vehicle.find(params[:id])
+
+    @services = Service.select(:id, :price, :name)
+
+    @selected_services = @vehicle.services.map{ |e| 
+      JSON.parse(e).with_indifferent_access 
+    }
+
+    @selected_services_ids = @selected_services.map{ |e| e["id"] }
   end
 
   # GET /vehicles/new
