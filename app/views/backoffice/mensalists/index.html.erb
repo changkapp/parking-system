@@ -17,8 +17,6 @@
                 <% end %>
                 </center>
                 <p></p>
-
-                <p id="notice"><%= notice %></p>
             
             <div class="row">
                 <div class="col-lg-12">
@@ -40,13 +38,20 @@
                                 </thead>
                                 <tbody>
                                   <% @mensalists.each do |mensalist| %>
+                                  <%  @selected_services = mensalist.services.map{ |e| 
+                                  JSON.parse(e).with_indifferent_access }%>
+                                  <% if @selected_services && mensalist.price %>
+                                  <% service_price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
+                                  <% total = service_price + mensalist.price %> 
+                                  <% end %>
+                                  
                                     <tr class="odd gradeX">
                                         <td><%= mensalist.name %></td>
                                         <td><%= mensalist.email %></td>
                                         <td>R$ <%= mensalist.price %></td>
                                         <td><%= l mensalist.created_at, format: :short %></td>
                                         <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
-                                        <td>R$ </td>
+                                        <td>R$ <%= total %></td>
                                         <td><%= I18n.t :"activerecord.enums.mensalist.payment_statuses.#{mensalist.payment_status}" if mensalist.payment_status != nil %></td>
                                         <td style="width: 110px;">
                                             <%= link_to edit_backoffice_mensalist_path(mensalist), class: "btn btn-success btn-circle" do %>
