@@ -98,12 +98,14 @@ ActiveRecord::Schema.define(version: 20180322000038) do
     t.string   "model"
     t.string   "email"
     t.text     "observations"
-    t.integer  "payment_status", default: 1
+    t.float    "total_to_pay"
+    t.integer  "permanence_type", default: 1
+    t.integer  "payment_status",  default: 1
     t.date     "checkout_date"
-    t.jsonb    "services",       default: {}
+    t.jsonb    "services",        default: {}
     t.integer  "park_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "vehicles", ["park_id"], name: "index_vehicles_on_park_id", using: :btree

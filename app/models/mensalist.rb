@@ -29,3 +29,4 @@ class Mensalist < ActiveRecord::Base
 		end
 	end
 end
+

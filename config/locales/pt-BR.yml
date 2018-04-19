@@ -13,6 +13,10 @@ pt-BR:
         payment_statuses:
           unpaid: "Não Pago"
           paid: "Pago"
+        permanence_types:
+          rotative: "Rotativo"
+          futebol: "Futebol"
+          daily: "Diária"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

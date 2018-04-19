@@ -75,6 +75,6 @@ class Backoffice::VehiclesController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:plate, :park_id, :color, :model, :email, :observations, :payment_status, :services => [])
+      params.require(:vehicle).permit(:plate, :park_id, :total_to_pay, :permanence_type,:color , :model, :email, :observations, :payment_status, :services => [])
     end
 end

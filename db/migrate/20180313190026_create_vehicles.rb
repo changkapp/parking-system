@@ -6,6 +6,8 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :model
       t.string :email
       t.text :observations
+      t.float :total_to_pay
+      t.integer :permanence_type, default: 1
       t.integer :payment_status, default: 1
       t.date :checkout_date
       t.jsonb :services, default: {} 

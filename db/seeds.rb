@@ -15,9 +15,9 @@ puts "Parks created."
 park_fist_id = Park.first.id
 
 puts "Creating Services..."
-	Service.find_or_create_by(name: "Lava Jato", price: 27.50)
-	Service.find_or_create_by(name: "Futebol", price: 5.50)
-	Service.find_or_create_by(name: "Diária", price: 17.00)
+	Service.find_or_create_by(name: "Lava jato", price: 27.50)
+	Service.find_or_create_by(name: "Limpeza dos bancos", price: 5.50)
+	Service.find_or_create_by(name: "Limpeza dos pneus", price: 17.00)
 puts "Services created."
 
 

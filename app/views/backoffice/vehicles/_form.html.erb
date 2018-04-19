@@ -26,6 +26,13 @@
   <%= f.text_area :observations, class: 'form-control' %>
   </br>
 
+  <h1>Tipo de serviço</h1>
+  <br>
+  <%= f.label "Status do pagamento" %>
+  <%= f.select :permanence_type, enum_options_for_select(Vehicle, :permanence_type) %>
+  
+  <br>
+
   <h1>Serviços</h1>
 
     <% @services.each do |service| %>
