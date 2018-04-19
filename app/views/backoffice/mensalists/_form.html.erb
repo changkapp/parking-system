@@ -14,6 +14,10 @@
   <%= f.text_field :email, class: 'form-control' %>
   </br>
 
+  <%= f.label "Valor da mensalidade" %>
+  <%= f.text_field :price, class: 'form-control', :style=>'width:30%' %>
+  </br>
+
   <%= f.label "Data do primeiro pagamento" %>
   <br>
   <%= f.text_field :first_invoice_date, id: "datepicker" %>

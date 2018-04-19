@@ -30,9 +30,10 @@
                                     <tr>
                                         <th>Nome do mensalista</th>
                                         <th>Email</th>
-                                        <th>Preço a pagar</th>
+                                        <th>Preço da mensalidade</th>
                                         <th>Data de cadastro</th>
-                                        <th>Primeira data de cobrança</th>
+                                        <th>Data de cobrança</th>
+                                        <th>Preço total a pagar</th>
                                         <th>Status de Pagamento</th>
                                         <th></th>
                                     </tr>
@@ -44,8 +45,9 @@
                                         <td><%= mensalist.email %></td>
                                         <td>R$ <%= mensalist.price %></td>
                                         <td><%= l mensalist.created_at, format: :short %></td>
-                                        <td><%= mensalist.check_tolerance_date.strftime('%d/%m/%Y') %></td>
-                                        <td><%= I18n.t :"activerecord.enums.mensalist.payment_statuses.#{mensalist.payment_status}" %></td>
+                                        <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
+                                        <td>R$ </td>
+                                        <td><%= I18n.t :"activerecord.enums.mensalist.payment_statuses.#{mensalist.payment_status}" if mensalist.payment_status != nil %></td>
                                         <td style="width: 110px;">
                                             <%= link_to edit_backoffice_mensalist_path(mensalist), class: "btn btn-success btn-circle" do %>
                                                 <i class="fa fa-edit"></i>
@@ -55,7 +57,7 @@
                                                 <i class="fa fa-times"></i>
                                             <% end %>
 
-                                            <% if mensalist.payment_status == "paid" %>
+                                            <% if mensalist.payment_status == "paid" || mensalist.payment_status == "debtor" %>
                                               
                                               <%= link_to backoffice_mensalist_path(mensalist), method: :show, class: "btn btn-info btn-circle" do %>
                                                   <i class="fa fa-tasks"></i>

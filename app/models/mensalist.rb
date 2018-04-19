@@ -1,7 +1,8 @@
 class Mensalist < ActiveRecord::Base
 	belongs_to :park
 
-	after_save :check_payment_status_and_update
+
+	after_save :check_tolerance_date
 
 	enum payment_status: {
     unpaid: 1,
@@ -12,22 +13,24 @@ class Mensalist < ActiveRecord::Base
 
 	def check_tolerance_date
 		tolerance_date = self.days_of_tolerance
-		self.first_invoice_date = self.first_invoice_date + tolerance_date.days 
+		add_days = self.first_invoice_date + tolerance_date.days
+		self.update_column(:first_invoice_date, add_days) 
 	end
 
 	def check_payment_status_and_update
 		check_payment = self.payment_status
 
 		if check_payment == "paid"
+			binding.pry
 			old_invoice_date = self.check_tolerance_date
-			invoice_date = old_invoice_date + 1.month
-			self.first_invoice_date = invoice_date
-
-			if old_invoice_date > invoice_date
-				check_payment = "debtor"
-				self.payment_status = check_payment
+			old_date = self.first_invoice_date
+			invoice_date = old_date + 1.month
+			self.update_columns(first_invoice_date: invoice_date, payment_status: 1, services: {}, days_of_tolerance: 0)
+			
+			if old_date > invoice_date
+				self.update_column(payment_status: 3)
 			end
 		end
 	end
-end
 
+end
