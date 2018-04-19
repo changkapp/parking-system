@@ -5,13 +5,14 @@ class Mensalist < ActiveRecord::Base
 
 	enum payment_status: {
     unpaid: 1,
-    paid: 2
+    paid: 2,
+    debtor: 3
 	}
 
 
 	def check_tolerance_date
 		tolerance_date = self.days_of_tolerance
-		self.first_invoice_date = self.first_invoice_date + self.days_of_tolerance.days
+		self.first_invoice_date = self.first_invoice_date + tolerance_date.days 
 	end
 
 	def check_payment_status_and_update
@@ -23,7 +24,7 @@ class Mensalist < ActiveRecord::Base
 			self.first_invoice_date = invoice_date
 
 			if old_invoice_date > invoice_date
-				check_payment = "unpaid"
+				check_payment = "debtor"
 				self.payment_status = check_payment
 			end
 		end

@@ -2,13 +2,14 @@ pt-BR:
   devise:
     sessions:
       admin:
-        signed_in: "Bem vindo!" 
+        signed_in: "Usuário logado com sucesso!" 
   activerecord:
     enums:
       mensalist:
         payment_statuses:
           unpaid: "Não Pago"
           paid: "Pago"
+          debtor: "Pagamento Atrasado"
       vehicle:
         payment_statuses:
           unpaid: "Não Pago"
