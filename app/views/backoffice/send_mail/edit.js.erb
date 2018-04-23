@@ -1,7 +1,7 @@
 $(function(){
-  $('#recipient-name').val('<%= @vehicle.email %>');
-  $('#subject-text').val('Estacionamento - Link para visualização de nota fiscal');
-  $('h4.modal-title').text('<%= @vehicle.email %>');
-  $('#message-text').val('Olá, segue link para visualização de sua nota fiscal: https://parkadmin.herokuapp.com/backoffice/vehicles/<%= @vehicle.id %>')
-  $('#sendMailModal').modal();
+	$('#recipient-name').val('<%= @vehicle.email %>');
+	$('#subject-text').val('Estacionamento - Link para visualização de nota fiscal');
+	$('h4.modal-title').text('<%= @vehicle.email %>');
+	$('#message-text').val('Olá, segue link para visualização de sua nota fiscal: https://parkadmin.herokuapp.com/backoffice/vehicles/<%= @vehicle.id %>')
+	$('#sendMailModal').modal();
 });

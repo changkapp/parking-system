@@ -53,7 +53,7 @@
                                         <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
                                         <td>R$ <%= total %></td>
                                         <td><%= I18n.t :"activerecord.enums.mensalist.payment_statuses.#{mensalist.payment_status}" if mensalist.payment_status != nil %></td>
-                                        <td style="width: 110px;">
+                                        <td style="width: 135px;">
                                             <%= link_to edit_backoffice_mensalist_path(mensalist), class: "btn btn-success btn-circle" do %>
                                                 <i class="fa fa-edit"></i>
                                             <% end %>
@@ -67,11 +67,17 @@
                                               <%= link_to backoffice_mensalist_path(mensalist.id), method: :get, class: "btn btn-info btn-circle" do %>
                                                   <i class="fa fa-tasks"></i>
                                               <% end %>
+                                              <%= link_to edit_backoffice_send_mensalist_mail_path(mensalist), class: "btn btn-warning btn-circle", remote: true do %>
+                                                <i class="fa fa-envelope"></i>
+                                              <% end %>
                                             
                                             <% else %>
                                               <%= link_to '#', disabled: "disabled", class: "btn btn-info btn-circle" do %>
                                                 <i class="fa fa-tasks"></i>
                                               <% end %>
+                                              <%= link_to '#', disabled: "disabled", class: "btn btn-warning btn-circle" do %>
+                                                <i class="fa fa-envelope"></i>
+                                             <% end %>
                                             <% end %>
                                         </td>
                                     </tr>
@@ -96,3 +102,5 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+
+<%= render partial: 'backoffice/mails/send_mail' %>

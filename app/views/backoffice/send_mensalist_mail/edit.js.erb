@@ -1,0 +1,7 @@
+$(function(){ 
+	$('#recipient-name').val('<%= @mensalist.email %>');
+	$('#subject-text').val('Estacionamento - Link para visualização de nota fiscal');
+	$('h4.modal-title').text('<%= @mensalist.email %>');
+	$('#message-text').val('Olá, segue link para visualização de sua nota fiscal: https://parkadmin.herokuapp.com/backoffice/mensalists/<%= @mensalist.id %>')
+	$('#sendMailModal').modal();
+});
