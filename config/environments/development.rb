@@ -8,6 +8,17 @@ Rails.application.configure do
 
   config.cache_classes = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp.sendgrid.net",
+  :port                 => 587,
+  :domain               => 'parkadmin.herokuapp.com',
+  :user_name            => 'andrechang',
+  :password             => 'chang1234',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  }
+
+  config.action_mailer.perform_deliveries = true
   # Do not eager load code on boot.
   config.eager_load = false
 

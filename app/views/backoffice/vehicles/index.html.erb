@@ -46,7 +46,7 @@
                                         <td><%= vehicle.observations %></td>
                                         <td><%= l vehicle.created_at, format: :short %></td>
                                         <td><%= I18n.t :"activerecord.enums.vehicle.payment_statuses.#{vehicle.payment_status}" %></td>
-                                        <td style="width: 110px;">
+                                        <td style="width: 135px;">
                                             <%= link_to edit_backoffice_vehicle_path(vehicle), class: "btn btn-success btn-circle" do %>
                                                 <i class="fa fa-edit"></i>
                                             <% end %>
@@ -66,6 +66,9 @@
                                                 <i class="fa fa-tasks"></i>
                                               <% end %>
                                             <% end %>
+                                             <%= link_to edit_backoffice_send_mail_path(vehicle), class: "btn btn-warning btn-circle", remote: true do %>
+                                                <i class="fa fa-envelope"></i>
+                                             <% end %>
                                         </td>
                                     </tr>
                                   <% end %>
@@ -89,3 +92,5 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
+
+<%= render partial: 'backoffice/mails/send_mail' %>
