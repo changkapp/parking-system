@@ -1,5 +1,6 @@
 class Backoffice::MensalistsController < BackofficeController
-  
+  skip_before_action :authenticate_admin!, only: :show
+
   def index
     @mensalists = Mensalist.all
   end
@@ -15,6 +16,7 @@ class Backoffice::MensalistsController < BackofficeController
     }
     
     @selected_services_ids = @selected_services.map{ |e| e["id"] }
+    render layout: "application"
   end
 
   # GET /mensalists/new

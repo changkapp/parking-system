@@ -1,5 +1,6 @@
 class Backoffice::VehiclesController < BackofficeController
-  
+  skip_before_action :authenticate_admin!, only: :show
+
   def index
     @vehicles = Vehicle.all
   end
@@ -7,6 +8,7 @@ class Backoffice::VehiclesController < BackofficeController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    
     @vehicle = Vehicle.find(params[:id])
 
     @services = Service.select(:id, :price, :name)
@@ -16,6 +18,7 @@ class Backoffice::VehiclesController < BackofficeController
     }
 
     @selected_services_ids = @selected_services.map{ |e| e["id"] }
+    render layout: "application"
   end
 
   # GET /vehicles/new
