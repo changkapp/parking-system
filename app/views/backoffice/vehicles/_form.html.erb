@@ -56,12 +56,6 @@
   <% end %>
   <br>
 
-<!--<% if @vehicle.services %>
-<% price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
-<% total = price + @vehicle.calculate_invoice%>
-<%= total %>
-<% end %>  -->
-
   <%= link_to 'Voltar', backoffice_vehicles_path, class: "btn btn-primary" %>
   <%= f.submit "Salvar", class: "btn btn-primary" %>
 

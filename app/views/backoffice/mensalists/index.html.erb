@@ -50,7 +50,11 @@
                                         <td><%= mensalist.email %></td>
                                         <td>R$ <%= mensalist.price %></td>
                                         <td><%= l mensalist.created_at, format: :short %></td>
-                                        <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
+                                        <% if mensalist.check_payment_status_and_update %>
+                                          <td><%= mensalist.check_payment_status_and_update.strftime('%d/%m/%Y') %></td>
+                                        <% else %>
+                                          <td><%= mensalist.first_invoice_date.strftime('%d/%m/%Y') %></td>
+                                        <% end %>
                                         <td>R$ <%= total %></td>
                                         <td><%= I18n.t :"activerecord.enums.mensalist.payment_statuses.#{mensalist.payment_status}" if mensalist.payment_status != nil %></td>
                                         <td style="width: 135px;">

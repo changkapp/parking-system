@@ -84,6 +84,6 @@ class Backoffice::MensalistsController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mensalist_params
-      params.require(:mensalist).permit(:name, :email, :price, :park_id, :days_of_tolerance, :first_invoice_date, :plates, :car_seat_numbers, :payment_status, :services => [])
+      params.require(:mensalist).permit(:name, :email, :price, :park_id, :days_of_tolerance, :past_invoice_date,:first_invoice_date, :plates, :car_seat_numbers, :payment_status, :services => [])
     end
 end

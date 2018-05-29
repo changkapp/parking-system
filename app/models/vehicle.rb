@@ -13,9 +13,11 @@ class Vehicle < ActiveRecord::Base
 	}
 
 	def check_hour_result
-		created_date_hour = self.created_at.strftime('%H').to_i
-		updated_date_hour = self.updated_at.strftime('%H').to_i
-		updated_date_hour - created_date_hour 
+    if self.created_at && self.updated_at
+		  created_date_hour = self.created_at.strftime('%H').to_i
+		  updated_date_hour = self.updated_at.strftime('%H').to_i
+		  updated_date_hour - created_date_hour
+    end 
 	end
 
 	def check_min_result
@@ -25,23 +27,27 @@ class Vehicle < ActiveRecord::Base
 	end
 
 	def calculate_time_to_invoice
-		calculate_mins = ((60 * check_hour_result) + check_min_result) / 30
-		check_reminder = ((60 * check_hour_result) + check_min_result) % 30
+    if self.created_at && self.updated_at
+  		calculate_mins = ((60 * check_hour_result) + check_min_result) / 30
+  		check_reminder = ((60 * check_hour_result) + check_min_result) % 30
 
-		if check_reminder != 0
-			calculate_mins += 1 
-		else
-			calculate_mins
-		end
+  		if check_reminder != 0
+  			calculate_mins += 1 
+  		else
+  			calculate_mins
+  		end
+    end
 	end
 
 	def calculate_invoice
-		if permanence_type == "rotative"
-			self.total_to_pay = (calculate_time_to_invoice * 2.5)
-		elsif permanence_type == "futebol"
-			self.total_to_pay = calculate_time_to_invoice * 1.5
-		else
-			self.total_to_pay = calculate_time_to_invoice * 15
-		end 
-	end
+    if self.created_at && self.updated_at
+  		if permanence_type == "rotative"
+  			self.total_to_pay = (calculate_time_to_invoice * 2.5)
+  		elsif permanence_type == "futebol"
+  			self.total_to_pay = calculate_time_to_invoice * 1.5
+  		else
+  			self.total_to_pay = calculate_time_to_invoice * 15
+  		end 
+	   end
+   end
 end
