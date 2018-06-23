@@ -32,6 +32,7 @@
                                         <th>Email</th>
                                         <th>Observações</th>
                                         <th>Entrada</th>
+                                        <th>Preço até o momento</th>
                                         <th>Status de pagamento</th>
                                         <th></th>
                                     </tr>
@@ -45,6 +46,7 @@
                                         <td><%= vehicle.email %></td>
                                         <td><%= vehicle.observations %></td>
                                         <td><%= l vehicle.created_at, format: :short %></td>
+                                        <td><%= vehicle.calculate_invoice %></td>
                                         <td><%= I18n.t :"activerecord.enums.vehicle.payment_statuses.#{vehicle.payment_status}" %></td>
                                         <td style="width: 135px;">
                                             <%= link_to edit_backoffice_vehicle_path(vehicle), class: "btn btn-success btn-circle" do %>
@@ -86,12 +88,15 @@
                 <!-- /.col-lg-12 -->
             </div>
                 <!-- /.panel-body -->
-                </div>
-            </div>
-            <!-- /.col-lg-12 -->
+          </div>
         </div>
-        <!-- /.row -->
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+  </div>
+     
+  
+                
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->

@@ -3,6 +3,9 @@ class Backoffice::VehiclesController < BackofficeController
 
   def index
     @vehicles = Vehicle.all
+
+    @services = Service.all
+
   end
 
   # GET /vehicles/1
