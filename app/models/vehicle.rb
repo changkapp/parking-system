@@ -44,9 +44,9 @@ class Vehicle < ActiveRecord::Base
   		if permanence_type == "rotative"
   			self.total_to_pay = (calculate_time_to_invoice * 2.5)
   		elsif permanence_type == "futebol"
-  			self.total_to_pay = calculate_time_to_invoice * 1.5
+  			self.total_to_pay = (calculate_time_to_invoice * 1.5)
   		else
-  			self.total_to_pay = calculate_time_to_invoice * 15
+  			self.total_to_pay = (calculate_time_to_invoice * 15)
   		end 
 	   end
    end

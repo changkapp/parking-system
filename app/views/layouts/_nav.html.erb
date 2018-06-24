@@ -70,11 +70,13 @@
                     <i class="fa fa-wrench fa-fw"></i> Serviços
                 <% end %>
             </li>
+            <% if current_admin.role == 'complete_access' %>
             <li>
                 <%= link_to backoffice_cash_flows_path do %>
                     <i class="fa fa-money fa-fw"></i> Caixa
                 <% end %>
             </li>
+            <% end %>
             <li>
                 <%= link_to backoffice_maps_path do %>
                     <i class="fa fa-sitemap fa-fw"></i> Mapa de vagas

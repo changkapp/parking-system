@@ -22,15 +22,18 @@
                             <br>Endereço: <%= @vehicle.park.park_location %>
                             <br>Placa do veículo: <%= @vehicle.plate %>
                             <br>Entrada: <%= l @vehicle.created_at, format: :short %>
-                            <br>Saída: <%= l @vehicle.updated_at, format: :short %>
 
-                            <% if @vehicle.services %>
-                              <% price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
-                              <% total = price + @vehicle.calculate_invoice %> 
-                              <br>Serviços utilizados: <%= @selected_services.map{|data| data['name']}.join(', ').gsub(/["]/,' ') %>
-                              <br>Valor total: R$ <%= total %>
-                            <% else %>
-                              <br>Valor total: R$ <%= @vehicle.calculate_invoice %>
+                            <% if @vehicle.payment_status == "paid" %>
+                              <br>Saída: <%= l @vehicle.updated_at, format: :short %>
+
+                              <% if @vehicle.services %>
+                                <% price = @selected_services.reduce(0) { |sum, x| sum += x[:price] } %>
+                                <% total = price + @vehicle.calculate_invoice %> 
+                                <br>Serviços utilizados: <%= @selected_services.map{|data| data['name']}.join(', ').gsub(/["]/,' ') %>
+                                <br>Valor total: R$ <%= total %>
+                              <% else %>
+                                <br>Valor total: R$ <%= @vehicle.calculate_invoice %>
+                              <% end %>
                             <% end %>
                             <br>
                             <br>
